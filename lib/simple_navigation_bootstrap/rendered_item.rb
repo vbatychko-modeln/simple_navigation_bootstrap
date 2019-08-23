@@ -118,10 +118,15 @@ module SimpleNavigationBootstrap
       end
 
 
-      def simple_link
+     def simple_link
         link_options[:method] ||= item.method
+
+        if level > 1
+                link_options[:class] = [link_options[:class], 'dropdown-item'].flatten.compact.join(' ')
+        end
+
         link_to(item.name, (item.url || '#'), link_options)
-      end
+     end
 
   end
 end
